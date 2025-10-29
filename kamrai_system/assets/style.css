@@ -1,0 +1,816 @@
+/* --- Brown & Peach Theme --- */
+/* Color Palette:
+    - Dark Brown (Text/BG): #4A3A3A
+    - Main Brown (Sidebar): #8D5B4C
+    - Light Peach (Accent BG): #FBEADC
+    - Main Peach (Buttons): #F3A683
+    - Strong Peach (Hover): #E08A5E
+    - Green (Success): #27ae60
+    - Red (Danger): #c0392b
+*/
+
+/* Basic Setup */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #f9f6f3; /* Very light peach/off-white */
+}
+
+/* --- New Sidebar Navigation --- */
+.sidebar {
+    width: 240px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh; /* Full height */
+    background-color: #8D5B4C; /* Main Brown */
+    color: white;
+    box-shadow: 3px 0 10px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+}
+.sidebar h2 {
+    text-align: center;
+    color: #F3A683; /* Main Peach */
+    margin: 1.5rem 0;
+    font-size: 1.6rem;
+}
+.sidebar-links {
+    flex-grow: 1; /* Pushes footer down */
+}
+.sidebar a {
+    display: block;
+    padding: 1rem 1.5rem;
+    text-decoration: none;
+    color: #f1f1f1;
+    font-size: 1.1rem;
+    transition: background-color 0.2s, padding-left 0.2s;
+}
+.sidebar a:hover {
+    background-color: #6D4A3E; /* Darker brown */
+    padding-left: 1.75rem;
+}
+.sidebar-divider {
+    border: none;
+    border-top: 1px solid #AB8376; /* Lighter brown */
+    margin: 1rem 1.5rem;
+}
+
+/* Sidebar footer for logout */
+.sidebar-footer {
+    padding: 1.5rem;
+    background-color: #4A3A3A; /* Darkest Brown */
+    font-size: 0.9rem;
+}
+.sidebar-footer span {
+    display: block;
+    color: #aaa;
+    margin-bottom: 0.75rem;
+}
+.sidebar-footer .logout-link {
+    padding: 0;
+    color: #F3A683; /* Main Peach */
+    font-weight: bold;
+}
+.sidebar-footer .logout-link:hover {
+    background: none;
+    padding-left: 0;
+    text-decoration: underline;
+}
+
+/* --- Main Content Area --- */
+.main-content {
+    margin-left: 240px; /* Must match sidebar width */
+    padding: 1.5rem;
+}
+
+/* --- Cleanup Old Header --- */
+header {
+    background: none;
+    color: #4A3A3A; /* Dark Brown */
+    padding: 0 0 1rem 0;
+    box-shadow: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+header h1 {
+    color: #4A3A3A;
+    margin: 0;
+}
+.back-button {
+    background-color: #8D5B4C; /* Main Brown */
+    color: white;
+    padding: 0.75rem 1.25rem;
+    border-radius: 5px;
+    text-decoration: none;
+}
+.back-button:hover {
+    background-color: #6D4A3E; /* Darker Brown */
+}
+
+/* Table Grid (Waiter Dashboard) */
+#table-grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1.5rem;
+}
+.table-button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #4A3A3A;
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
+    border: 2px solid transparent;
+}
+.table-button:hover {
+    transform: translateY(-5px);
+}
+.table-button strong {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+.table-button.available {
+    background-color: #e4f7e5;
+    border-color: #27ae60;
+}
+.table-button.occupied {
+    background-color: #fde2e2;
+    border-color: #c0392b;
+}
+
+/* --- Create Order Page --- */
+.order-layout {
+    display: flex;
+    gap: 1.5rem;
+}
+#menu-container {
+    flex: 2;
+    background: #fff;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    max-height: 80vh;
+    overflow-y: auto;
+}
+#menu-items-list h3 {
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 0.5rem;
+    color: #8D5B4C;
+}
+.menu-item-btn {
+    display: block;
+    width: 100%;
+    padding: 0.75rem;
+    margin-bottom: 0.5rem;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-align: left;
+    cursor: pointer;
+    font-size: 1rem;
+}
+.menu-item-btn:hover {
+    background-color: #FBEADC; /* Light Peach */
+    border-color: #F3A683;
+}
+#cart-container {
+    flex: 1;
+    background: #fff;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    max-height: 80vh;
+}
+#cart-items-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 55vh;
+    overflow-y: auto;
+}
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.75rem 0.25rem;
+    border-bottom: 1px solid #eee;
+}
+.cart-summary {
+    font-size: 1.25rem;
+    padding: 1rem 0;
+    margin-top: 1rem;
+    border-top: 2px solid #4A3A3A;
+}
+#submit-order-btn {
+    width: 100%;
+    padding: 1rem;
+    background-color: #F3A683; /* Main Peach */
+    color: #4A3A3A;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+#submit-order-btn:hover {
+    background-color: #E08A5E; /* Strong Peach */
+}
+
+/* --- Kitchen Dashboard --- */
+.kitchen-layout {
+    display: flex;
+    gap: 1.5rem;
+}
+.order-column {
+    flex: 1;
+    background-color: #FBEADC; /* Light Peach */
+    padding: 1rem;
+    border-radius: 8px;
+    height: 85vh;
+    overflow-y: auto;
+}
+.order-column h2 {
+    margin-top: 0;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #E08A5E;
+    color: #8D5B4C;
+}
+.order-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.order-card {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border: 1px solid #ccc;
+}
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.2rem;
+    background-color: #fffaf7;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #eee;
+}
+.order-items {
+    list-style: none;
+    padding: 1rem;
+    margin: 0;
+}
+.order-items li {
+    font-size: 1.1rem;
+    padding: 0.25rem 0;
+}
+.order-items li strong {
+    color: #c0392b;
+    margin-right: 0.5rem;
+}
+.card-footer {
+    padding: 0.5rem;
+    background: #fffaf7;
+    border-top: 1px solid #eee;
+}
+.btn-preparing, .btn-served {
+    width: 100%;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    color: white;
+}
+.btn-preparing {
+    background-color: #f39c12;
+}
+.btn-preparing:hover {
+    background-color: #e67e22;
+}
+.btn-served {
+    background-color: #27ae60;
+}
+.btn-served:hover {
+    background-color: #229954;
+}
+
+/* --- Cashier/Admin Tables --- */
+.styled-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 1rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+}
+.styled-table thead tr {
+    background-color: #8D5B4C; /* Main Brown */
+    color: #ffffff;
+    text-align: left;
+}
+.styled-table th,
+.styled-table td {
+    padding: 12px 15px;
+}
+.styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+.styled-table tbody tr:nth-of-type(even) {
+    background-color: #fdfaf7;
+}
+.styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid #8D5B4C;
+}
+
+/* Badge for Order Status */
+.status-badge {
+    padding: 5px 10px;
+    border-radius: 15px;
+    color: white;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+.status-badge.pending { background-color: #e67e22; }
+.status-badge.preparing { background-color: #3498db; }
+.status-badge.served { background-color: #27ae60; }
+.status-badge.available { background-color: #27ae60; }
+.status-badge.occupied { background-color: #c0392b; }
+
+/* Payment/Action Buttons */
+.btn-pay {
+    background-color: #27ae60;
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+.btn-pay:hover {
+    background-color: #229954;
+}
+.btn-edit {
+    background: #f39c12;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.btn-edit:hover {
+    background: #e67e22;
+}
+.btn-delete {
+    background: #c0392b;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.btn-delete:hover {
+    background: #a93226;
+}
+
+/* --- Login & Homepage Body --- */
+.login-body, .homepage-body {
+    background-color: #4A3A3A; /* Dark Brown */
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 2rem;
+    box-sizing: border-box;
+}
+.login-container, .homepage-container {
+    background: rgba(141, 91, 76, 0.5); /* Main Brown Transparent */
+    padding: 2.5rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    border: 1px solid #F3A683;
+    text-align: center;
+    max-width: 500px;
+    width: 100%;
+}
+.login-container h2, .homepage-container h1 {
+    margin-top: 0;
+}
+.login-container .admin-form {
+    text-align: left;
+}
+.login-container .admin-form label {
+    color: white;
+}
+.login-container a, .homepage-container a {
+    color: #FBEADC; /* Light Peach */
+    display: inline-block;
+    margin-top: 1rem;
+}
+.error-message {
+    color: #fde2e2;
+    margin-top: 1rem;
+    font-weight: bold;
+}
+
+/* Homepage Links */
+.btn-link {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background-color: #F3A683; /* Main Peach */
+    color: #4A3A3A;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    margin: 0.5rem;
+}
+.btn-link:hover {
+    background-color: #E08A5E;
+}
+.btn-link-secondary {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background-color: #777;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    margin: 0.5rem;
+}
+.btn-link-secondary:hover {
+    background-color: #999;
+}
+/* Homepage Logo */
+.logo-container {
+    margin-bottom: 1rem;
+}
+.homepage-logo {
+    max-width: 150px;
+    height: auto;
+}
+
+/* --- Admin Dashboard Hub --- */
+.admin-menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+.admin-menu-item {
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    text-decoration: none;
+    color: #4A3A3A;
+    transition: all 0.2s;
+    border: 1px solid #FBEADC;
+}
+.admin-menu-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    border-color: #F3A683;
+}
+.admin-menu-item .admin-icon {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+.admin-menu-item h3 {
+    margin: 0.5rem 0;
+    color: #8D5B4C;
+}
+.admin-menu-item p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #555;
+}
+.admin-menu-item.disabled {
+    background: #f4f4f4;
+    color: #aaa;
+    pointer-events: none;
+}
+.admin-menu-item.disabled h3 {
+    color: #999;
+}
+
+/* --- Admin Management Pages (Menu, Tables, Users) --- */
+.admin-layout {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+}
+.admin-form-container {
+    flex: 1;
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.admin-list-container {
+    flex: 2;
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.admin-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+.admin-form label {
+    font-weight: bold;
+    margin-bottom: -5px;
+    color: #6D4A3E;
+}
+.admin-form input,
+.admin-form select,
+.admin-form textarea,
+.admin-form button {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box; /* Important */
+    font-size: 1rem;
+}
+.admin-form button {
+    background-color: #F3A683;
+    color: #4A3A3A;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+}
+.admin-form button:hover {
+    background-color: #E08A5E;
+}
+.form-divider {
+    margin: 2rem 0;
+    border-top: 1px solid #eee;
+}
+
+/* Menu Admin List */
+.menu-category-admin h3 {
+    background-color: #f9f9f9;
+    padding: 0.5rem;
+    border-bottom: 2px solid #eee;
+}
+.admin-item-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 0.5rem;
+}
+.admin-item-table th, 
+.admin-item-table td {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid #f0f0f0;
+}
+.admin-item-table th {
+    font-size: 0.9rem;
+    color: #555;
+}
+.admin-item-table .action-buttons {
+    display: flex;
+    gap: 5px;
+}
+
+/* --- Modals (Edit Menu, Payment) --- */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.6);
+}
+.modal-content {
+    background-color: #fefefe;
+    margin: 10% auto;
+    padding: 2rem;
+    border: 1px solid #888;
+    width: 90%;
+    max-width: 500px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    position: relative;
+}
+.modal-close {
+    color: #aaa;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 28px;
+    font-weight: bold;
+}
+.modal-close:hover,
+.modal-close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+.modal-content h2 {
+    margin-top: 0;
+    color: #8D5B4C;
+}
+.modal-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* Payment Modal Specific */
+.payment-total {
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.payment-total strong {
+    color: #27ae60;
+}
+.payment-calculator {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 10px;
+    align-items: center;
+}
+.payment-calculator label {
+    font-weight: bold;
+    color: #6D4A3E;
+}
+.payment-calculator input {
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+.payment-calculator button {
+    padding: 0.75rem;
+    background: #E08A5E;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.payment-change {
+    grid-column: 1 / -1; /* Span full width */
+    font-size: 1.2rem;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+.payment-buttons {
+    display: flex;
+    gap: 1rem;
+}
+.payment-buttons button {
+    flex: 1; /* Both buttons take equal space */
+    padding: 1rem;
+    font-size: 1.1rem;
+}
+
+/* --- Receipt Page --- */
+.receipt-body {
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+}
+.receipt-container {
+    width: 100%;
+    max-width: 450px; /* Standard receipt width */
+    padding: 1.5rem;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    background: #fff;
+}
+.receipt-header {
+    text-align: center;
+    border-bottom: 2px dashed #8D5B4C;
+    padding-bottom: 1rem;
+}
+.receipt-header h1 {
+    color: #4A3A3A;
+    margin: 0;
+}
+.receipt-header p {
+    margin: 4px 0;
+    font-size: 0.9rem;
+}
+.receipt-info {
+    padding: 1rem 0;
+    border-bottom: 1px dashed #ccc;
+}
+.order-details {
+    width: 100%;
+}
+.order-details td {
+    padding: 2px 0;
+    font-size: 0.9rem;
+}
+.order-details td:last-child {
+    text-align: right;
+    font-weight: bold;
+}
+.receipt-items {
+    padding: 1rem 0;
+    border-bottom: 1px dashed #ccc;
+}
+.order-items {
+    width: 100%;
+    border-collapse: collapse;
+}
+.order-items th, .order-items td {
+    padding: 6px 0;
+    text-align: left;
+    font-size: 0.95rem;
+}
+.order-items th:nth-child(2), .order-items td:nth-child(2) {
+    text-align: center;
+}
+.order-items th:last-child, .order-items td:last-child {
+    text-align: right;
+}
+.receipt-total {
+    padding: 1rem 0;
+}
+.order-total {
+    width: 100%;
+}
+.order-total td {
+    padding: 4px 0;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #4A3A3A;
+}
+.order-total td:last-child {
+    text-align: right;
+}
+.receipt-footer {
+    text-align: center;
+    padding-top: 1rem;
+    border-top: 2px dashed #8D5B4C;
+    font-size: 0.9rem;
+}
+.print-button {
+    margin-top: 2rem;
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    background-color: #F3A683;
+    color: #4A3A3A;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+.print-button:hover {
+    background-color: #E08A5E;
+}
+
+
+/* --- Homepage Announcement Boxes --- */
+.announcement-box {
+    position: fixed;
+    width: 250px;
+    background: rgba(255, 255, 255, 0.9); /* White, slightly transparent */
+    color: #4A3A3A; /* Dark brown text */
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    border: 1px solid #F3A683; /* Peach border */
+    z-index: 100;
+}
+.announcement-box.box-top-left {
+    top: 750px;
+    left: 300px;
+}
+.announcement-box.box-top-right {
+    top: 750px;
+    right: 300px;
+}
+.announcement-title {
+    margin: 0 0 0.75rem 0;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #F3A683; /* Peach line */
+    color: #8D5B4C; /* Main brown color */
+}
+.announcement-box p {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
